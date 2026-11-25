@@ -1,0 +1,475 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mama ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #fff5f6;
+    color: #805568;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background:
+        radial-gradient(circle at 20% 20%, #fff 0%, transparent 30%),
+        linear-gradient(135deg, #fce2e8, #fff4ed, #f8d9e5);
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(65px, 12vw, 110px);
+    color: #bd718c;
+    margin: 15px 0;
+    font-weight: normal;
+}
+
+.subtitle {
+    letter-spacing: 4px;
+    font-size: 12px;
+}
+
+.hero p {
+    max-width: 500px;
+    line-height: 2;
+    font-size: 15px;
+}
+
+button {
+    border: none;
+    background: #c77e99;
+    color: white;
+    padding: 15px 28px;
+    border-radius: 35px;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 12px;
+    box-shadow: 0 5px 15px #c77e9944;
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    background: #a95d7c;
+}
+
+.flower {
+    position: absolute;
+    font-size: 35px;
+    animation: float 5s ease-in-out infinite;
+    opacity: .7;
+}
+
+.f1 { top: 10%; left: 8%; }
+.f2 { top: 20%; right: 10%; animation-delay: 1s; }
+.f3 { bottom: 15%; left: 15%; animation-delay: 2s; }
+.f4 { bottom: 10%; right: 12%; animation-delay: 3s; }
+
+@keyframes float {
+    0%,100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-20px) rotate(15deg); }
+}
+
+section {
+    padding: 75px 20px;
+}
+
+.section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    color: #bd718c;
+    margin-bottom: 15px;
+}
+
+.cake {
+    font-size: 100px;
+    cursor: pointer;
+    transition: .3s;
+    display: inline-block;
+}
+
+.cake:hover {
+    transform: scale(1.1);
+}
+
+#cakeMessage {
+    min-height: 35px;
+    line-height: 1.8;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 35px auto;
+}
+
+.photo {
+    min-height: 260px;
+    border: 10px solid white;
+    background: linear-gradient(145deg, #f8dce5, #fff1e9);
+    box-shadow: 0 5px 20px #a76d8430;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 12px;
+    color: #ad7188;
+}
+
+.photo span {
+    font-size: 55px;
+}
+
+.photo p {
+    font-size: 12px;
+}
+
+.letter {
+    max-width: 650px;
+    margin: 25px auto;
+    background: white;
+    padding: 35px 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px #c77e9920;
+    line-height: 2.2;
+    display: none;
+}
+
+footer {
+    padding: 35px;
+    background: #f5dce4;
+    line-height: 2;
+}
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+
+/* Birthday photo experience */
+.memories-wrap{max-width:1050px;margin:0 auto}
+.slideshow{max-width:650px;margin:30px auto 40px;background:#fff;padding:12px;border-radius:20px;box-shadow:0 8px 30px #c77e9920}
+.slideshow img{width:100%;height:440px;object-fit:contain;background:#fff7f9;border-radius:12px;display:block}
+.slide-controls{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:8px}
+.slide-count{font-size:13px;color:#ad7188;min-width:70px}
+.gallery .photo{padding:0;overflow:hidden;min-height:0;border:8px solid white;border-radius:10px;display:block;background:white}
+.gallery .photo img{width:100%;height:270px;object-fit:cover;display:block;transition:transform .4s}
+.gallery .photo:hover img{transform:scale(1.04)}
+.gallery .photo p{padding:10px;margin:0;font-size:12px;letter-spacing:1px}
+#extraMemories{display:none}
+#extraMemories.show{display:grid}
+@media(max-width:600px){.slideshow img{height:330px}.gallery .photo img{height:230px}}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<!-- INTRO -->
+
+<div class="hero">
+
+    <span class="flower f1">🌸</span>
+    <span class="flower f2">✨</span>
+    <span class="flower f3">🌷</span>
+    <span class="flower f4">💕</span>
+
+    <p class="subtitle">A SPECIAL DAY FOR SOMEONE SPECIAL</p>
+
+    <h1>Happy Birthday,<br>Mama!</h1>
+
+    <p>
+        Today the world celebrates the best mom icould ever ask for, 
+		thank you for always being there for me when 
+		it feels like my life is on a thread.
+        You're the reason my life is brighter, warmer and more meaningful.
+		wothout you i would have lost it already.Keo rata thata mmaka.
+    </p>
+
+    <button onclick="celebrate()">OPEN YOUR SURPRISE ♡</button>
+
+    <p>Made with endless love ♡</p>
+
+</div>
+
+
+<!-- CAKE -->
+
+<section id="celebration">
+
+    <p class="subtitle">LET THE CELEBRATION BEGIN</p>
+
+    <div class="section-title">A cake for you...</div>
+
+    <p>Tap the cake to blow out your candles, Mama!</p>
+
+    <div class="cake" onclick="blowCandles()" id="cake">
+        🎂
+    </div>
+
+    <p id="cakeMessage">Make a beautiful birthday wish. ✨</p>
+
+</section>
+
+
+<!-- MEMORIES -->
+
+<section style="background:#fff0f3">
+
+    <div class="section-title">Beautiful Memories</div>
+
+    <p>Every picture tells a little piece of your story.</p>
+
+    <div class="memories-wrap">
+      <div class="slideshow" aria-label="Mama's birthday photo slideshow">
+        <img id="slideImage" src="images/photo01.jpg" alt="A special memory of Mama">
+        <div class="slide-controls">
+          <button type="button" onclick="changeSlide(-1)" aria-label="Previous photo">❮ Previous</button>
+          <span class="slide-count" id="slideCount">1 / 14</span>
+          <button type="button" onclick="changeSlide(1)" aria-label="Next photo">Next ❯</button>
+        </div>
+      </div>
+      <div class="gallery" id="mainMemories">
+        <div class="photo"><img src="images/photo01.jpg" alt="Mama, memory 1" loading="lazy"><p>A PEACEFUL MOMENT</p></div>
+        <div class="photo"><img src="images/photo02.jpg" alt="Mama, memory 2" loading="lazy"><p>A SMILE WORTH KEEPING</p></div>
+        <div class="photo"><img src="images/photo03.jpg" alt="Mama, memory 3" loading="lazy"><p>A BEAUTIFUL MEMORY</p></div>
+        <div class="photo"><img src="images/photo04.jpg" alt="Mama, memory 4" loading="lazy"><p>A NIGHT TO REMEMBER</p></div>
+      </div>
+      <button type="button" id="revealButton" onclick="revealMemories()">REVEAL MORE MEMORIES ♡</button>
+      <div class="gallery" id="extraMemories">
+        <div class="photo"><img src="images/photo05.jpg" alt="Mama, memory 5" loading="lazy"><p>LITTLE MOMENTS, BIG LOVE</p></div>
+        <div class="photo"><img src="images/photo06.jpg" alt="Mama, memory 6" loading="lazy"><p>SUNSHINE AND SMILES</p></div>
+        <div class="photo"><img src="images/photo07.jpg" alt="Mama, memory 7" loading="lazy"><p>MAKING MEMORIES</p></div>
+        <div class="photo"><img src="images/photo08.jpg" alt="Mama, memory 8" loading="lazy"><p>A DAY OUT TOGETHER</p></div>
+        <div class="photo"><img src="images/photo09.jpg" alt="Mama, memory 9" loading="lazy"><p>FOREVER TREASURED</p></div>
+        <div class="photo"><img src="images/photo10.jpg" alt="Mama, memory 10" loading="lazy"><p>A GLIMPSE OF YOUR JOURNEY</p></div>
+        <div class="photo"><img src="images/photo11.jpg" alt="Mama, memory 11" loading="lazy"><p>A MOMENT FROM THE PAST</p></div>
+        <div class="photo"><img src="images/photo12.jpg" alt="Mama, memory 12" loading="lazy"><p>ALWAYS BEAUTIFUL</p></div>
+        <div class="photo"><img src="images/photo13.jpg" alt="Mama, memory 13" loading="lazy"><p>A MEMORY TO HOLD CLOSE</p></div>
+        <div class="photo"><img src="images/photo14.jpg" alt="Mama, memory 14" loading="lazy"><p>CELEBRATING YOU</p></div>
+      </div>
+    </div>
+
+    <p style="font-size:12px">
+        Every photo is a little reminder of how loved you are. ♡
+    </p>
+
+</section>
+
+
+<!-- LOVE LETTER -->
+
+<section>
+
+    <div class="section-title">A little message for you...</div>
+
+    <p>There's something I want you to know, Mama.</p>
+
+    <button onclick="openLetter()">OPEN MY LETTER 💌</button>
+
+    <div class="letter" id="letter">
+
+        <h2 style="font-family:'Great Vibes';font-size:45px;color:#bd718c">
+            Dear Mama,
+        </h2>
+
+        <p>
+            Happy birthday to one of the most special people
+            in my world.
+        </p>
+
+        <p>
+            Thank you for your love, your strength,
+            your kindness and all the little things
+            that make you who you are.
+        </p>
+
+        <p>
+            I hope this new chapter brings you happiness,
+            good health, beautiful memories and countless
+            reasons to smile.
+        </p>
+
+        <p>
+            You deserve all the beautiful things life has to offer.
+        </p>
+
+        <h2 style="font-family:'Great Vibes';color:#bd718c">
+            I love you, Mama. ♡
+        </h2>
+
+    </div>
+
+</section>
+
+
+<footer>
+    <h2 style="font-family:'Great Vibes';font-size:45px">
+        Keep shining, Mama ✨
+    </h2>
+
+    May your days always be as beautiful as your heart.
+
+    <p>Made with love, just for you. 🌷</p>
+</footer>
+
+
+<script>
+
+// OPEN THE CELEBRATION
+
+function celebrate() {
+    document.getElementById("celebration")
+        .scrollIntoView({behavior:"smooth"});
+
+    launchConfetti();
+}
+
+
+// BLOW OUT THE CANDLES
+
+let candlesOut = false;
+
+function blowCandles() {
+
+    const cake = document.getElementById("cake");
+    const message = document.getElementById("cakeMessage");
+
+    if (!candlesOut) {
+        cake.innerText = "🍰";
+        message.innerText =
+            "WISHES MADE! May all your dreams come true, Mama! 💗";
+
+        candlesOut = true;
+        launchConfetti();
+
+    } else {
+        cake.innerText = "🎂";
+        message.innerText = "Make another beautiful wish! ✨";
+        candlesOut = false;
+    }
+}
+
+
+// OPEN LETTER
+
+function openLetter() {
+    const letter = document.getElementById("letter");
+
+    if (letter.style.display === "block") {
+        letter.style.display = "none";
+    } else {
+        letter.style.display = "block";
+        letter.scrollIntoView({behavior:"smooth", block:"center"});
+        launchConfetti();
+    }
+}
+
+
+
+// PHOTO SLIDESHOW
+const birthdayPhotos = Array.from({length:14}, (_,i) => `images/photo${String(i+1).padStart(2,"0")}.jpg`);
+let currentSlide = 0;
+function showSlide(){
+  const image=document.getElementById("slideImage");
+  image.src=birthdayPhotos[currentSlide];
+  image.alt=`Mama's birthday memory ${currentSlide+1}`;
+  document.getElementById("slideCount").textContent=`${currentSlide+1} / ${birthdayPhotos.length}`;
+}
+function changeSlide(direction){
+  currentSlide=(currentSlide+direction+birthdayPhotos.length)%birthdayPhotos.length;
+  showSlide();
+}
+function revealMemories(){
+  const extra=document.getElementById("extraMemories");
+  const button=document.getElementById("revealButton");
+  extra.classList.toggle("show");
+  const opened=extra.classList.contains("show");
+  button.textContent=opened ? "HIDE EXTRA MEMORIES ♡" : "REVEAL MORE MEMORIES ♡";
+  if(opened){extra.scrollIntoView({behavior:"smooth",block:"start"});launchConfetti();}
+}
+
+// CONFETTI
+
+const confettiCanvas = document.getElementById("confetti");
+const confettiCtx = confettiCanvas.getContext("2d");
+
+let particles = [];
+
+function resizeConfetti() {
+    confettiCanvas.width = window.innerWidth;
+    confettiCanvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resizeConfetti);
+resizeConfetti();
+
+function launchConfetti() {
+
+    for (let i = 0; i < 100; i++) {
+        particles.push({
+            x: Math.random() * confettiCanvas.width,
+            y: -20 - Math.random() * 200,
+            size: Math.random() * 7 + 3,
+            speed: Math.random() * 3 + 2,
+            drift: (Math.random() - 0.5) * 3,
+            color: ["#e9a9c0","#f6d5df","#d9a5ad","#fff0c9"][Math.floor(Math.random()*4)]
+        });
+    }
+}
+
+function animateConfetti() {
+
+    confettiCtx.clearRect(
+        0, 0, confettiCanvas.width, confettiCanvas.height
+    );
+
+    particles.forEach(p => {
+        p.y += p.speed;
+        p.x += p.drift;
+
+        confettiCtx.fillStyle = p.color;
+        confettiCtx.fillRect(p.x, p.y, p.size, p.size);
+    });
+
+    particles = particles.filter(
+        p => p.y < confettiCanvas.height + 20
+    );
+
+    requestAnimationFrame(animateConfetti);
+}
+
+animateConfetti();
+
+</script>
+
+</body>
+</html>
